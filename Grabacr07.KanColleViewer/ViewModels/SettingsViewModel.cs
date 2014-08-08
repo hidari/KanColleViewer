@@ -20,7 +20,7 @@ using Settings = Grabacr07.KanColleViewer.Models.Settings;
 
 namespace Grabacr07.KanColleViewer.ViewModels
 {
-	public class SettingsViewModel : TabItemViewModel, INotifyDataErrorInfo
+	public class SettingsViewModel : TabItemViewModel
 	{
 		public override string Name
 		{
@@ -72,6 +72,7 @@ namespace Grabacr07.KanColleViewer.ViewModels
 
 		#endregion
 
+<<<<<<< .merge_file_a05356
 		#region ProxyPort 変更通知プロパティ
 
 		public string ProxyPort
@@ -121,6 +122,8 @@ namespace Grabacr07.KanColleViewer.ViewModels
 
 		#endregion
 
+=======
+>>>>>>> .merge_file_a09548
 		#region Libraries 変更通知プロパティ
 
 		private IEnumerable<BindableTextViewModel> _Libraries;
@@ -242,12 +245,12 @@ namespace Grabacr07.KanColleViewer.ViewModels
 
 		public bool EnableLogging
 		{
-			get { return Settings.Current.EnableLogging; }
+			get { return Settings.Current.KanColleClientSettings.EnableLogging; }
 			set
 			{
-				if (Settings.Current.EnableLogging != value)
+				if (Settings.Current.KanColleClientSettings.EnableLogging != value)
 				{
-					Settings.Current.EnableLogging = value;
+					Settings.Current.KanColleClientSettings.EnableLogging = value;
 					KanColleClient.Current.Homeport.Logger.EnableLogging = value;
 					this.RaisePropertyChanged();
 				}
@@ -256,12 +259,6 @@ namespace Grabacr07.KanColleViewer.ViewModels
 
 		#endregion
 
-
-
-		public bool HasErrors
-		{
-			get { return this.reSortieConditionError != null; }
-		}
 
 		public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
@@ -346,24 +343,6 @@ namespace Grabacr07.KanColleViewer.ViewModels
 		public void SetLocationLeft()
 		{
 			App.ViewModelRoot.Messenger.Raise(new SetWindowLocationMessage { MessageKey = "Window/Location", Left = 0.0 });
-		}
-
-
-		public IEnumerable GetErrors(string propertyName)
-		{
-			var errors = new List<string>();
-
-			switch (propertyName)
-			{
-				case "ReSortieCondition":
-					if (this.reSortieConditionError != null)
-					{
-						errors.Add(this.reSortieConditionError);
-					}
-					break;
-			}
-
-			return errors.HasItems() ? errors : null;
 		}
 
 		protected void RaiseErrorsChanged([CallerMemberName]string propertyName = "")

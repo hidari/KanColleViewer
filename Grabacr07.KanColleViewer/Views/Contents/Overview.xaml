@@ -15,7 +15,6 @@
 			 xmlns:catalogs="clr-namespace:Grabacr07.KanColleViewer.Views.Catalogs"
 			 xmlns:models="clr-namespace:Grabacr07.KanColleViewer.Models"
 			 xmlns:behaviors="clr-namespace:Grabacr07.KanColleViewer.Views.Behaviors"
-			 xmlns:fleets="clr-namespace:Grabacr07.KanColleViewer.ViewModels.Contents.Fleets"
 			 mc:Ignorable="d"
 			 d:DataContext="{d:DesignInstance vmContents:OverviewViewModel}"
 			 d:DesignWidth="680"
@@ -71,6 +70,11 @@
 				</Setter>
 			</Style>
 
+<<<<<<< .merge_file_a07264
+=======
+			<Style TargetType="{x:Type TextBlock}"
+				   BasedOn="{StaticResource DefaultTextStyleKey}" />
+>>>>>>> .merge_file_a12172
 		</ResourceDictionary>
 	</UserControl.Resources>
 
@@ -90,7 +94,12 @@
 	</i:Interaction.Triggers>
 
 
+<<<<<<< .merge_file_a07264
 	<ScrollViewer VerticalScrollBarVisibility="Auto">
+=======
+	<ScrollViewer VerticalScrollBarVisibility="Auto"
+				  PanningMode="Both">
+>>>>>>> .merge_file_a12172
 		<Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
@@ -110,6 +119,7 @@
 								<Border Padding="0,0,18,0"
 										Background="Transparent">
 									<StackPanel Orientation="Horizontal">
+<<<<<<< .merge_file_a07264
 										<ContentControl Content="{Binding State}"
 														Width="12"
 														Height="12"
@@ -139,6 +149,15 @@
 												   Text="{Binding Id, StringFormat='/{0}'}"
 												   FontSize="12"
 												   Foreground="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" />
+=======
+										<vContents:StateIconIndicator Width="12"
+																	  Height="12"
+																	  Margin="0,2,4,1" />
+										<TextBlock x:Name="FleetName"
+												   Text="{Binding Id, StringFormat='/{0}'}"
+												   Style="{DynamicResource DefaultTextStyleKey}"
+												   Foreground="{DynamicResource ActiveForegroundBrushKey}" />
+>>>>>>> .merge_file_a12172
 									</StackPanel>
 								</Border>
 								<DataTemplate.Triggers>
@@ -153,9 +172,18 @@
 						</ItemsControl.ItemTemplate>
 					</ListBox>
 
+<<<<<<< .merge_file_a07264
 					<ItemsControl ItemsSource="{Binding SelectedFleet.Ships}"
 								  Background="Transparent"
 								  Margin="0,3,0,0"
+=======
+					<vContents:StateDetailIndicator DockPanel.Dock="Top"
+													DataContext="{Binding SelectedFleet}"
+													Margin="0,7,0,3" />
+
+					<ItemsControl ItemsSource="{Binding SelectedFleet.Ships}"
+								  Background="Transparent"
+>>>>>>> .merge_file_a12172
 								  Grid.IsSharedSizeScope="True">
 						<i:Interaction.Triggers>
 							<behaviors:FlickTrigger>
@@ -166,10 +194,18 @@
 						</i:Interaction.Triggers>
 						<ItemsControl.ItemTemplate>
 							<DataTemplate>
+<<<<<<< .merge_file_a07264
 								<StackPanel Margin="0,4,0,0">
 									<Rectangle Height="1"
 											   Margin="0,0,0,4"
 											   Style="{DynamicResource SeparatorRectangleStyleKey}" />
+=======
+								<StackPanel Margin="0,2,0,0">
+									<StackPanel.Resources>
+										<Style TargetType="{x:Type TextBlock}"
+											   BasedOn="{StaticResource DefaultTextStyleKey}" />
+									</StackPanel.Resources>
+>>>>>>> .merge_file_a12172
 
 									<Grid>
 										<Grid.ColumnDefinitions>
@@ -184,16 +220,26 @@
 
 										<TextBlock ToolTipService.Placement="Relative"
 												   ToolTipService.HorizontalOffset="-9"
+<<<<<<< .merge_file_a07264
 												   ToolTipService.VerticalOffset="-5">
+=======
+												   ToolTipService.VerticalOffset="-3">
+>>>>>>> .merge_file_a12172
 											<Run Text="{Binding Ship.Info.Name, Mode=OneWay}"
-												 Style="{DynamicResource PickupTextElementStyleKey}" />
+												 Style="{DynamicResource EmphaticTextElementStyleKey}" />
 											<LineBreak />
 											<Run Text="{Binding Ship.Info.ShipType.Name, Mode=OneWay}"
 												 FontSize="11" />
 											<TextBlock.ToolTip>
+<<<<<<< .merge_file_a07264
 												<TextBlock>
 													<Run Text="{Binding Ship.Info.Name, Mode=OneWay}"
 														 Style="{DynamicResource PickupTextElementStyleKey}" />
+=======
+												<TextBlock Margin="0,-2,0,0">
+													<Run Text="{Binding Ship.Info.Name, Mode=OneWay}"
+														 Style="{DynamicResource EmphaticTextElementStyleKey}" />
+>>>>>>> .merge_file_a12172
 													<LineBreak />
 													<Run Text="{Binding Ship.Info.ShipType.Name, Mode=OneWay}"
 														 FontSize="11" />
@@ -205,13 +251,20 @@
 												   Margin="12,0,0,0">
 											<Run Text="Lv." />
 											<Run Text="{Binding Ship.Level, Mode=OneWay}"
-												 Style="{DynamicResource PickupTextElementStyleKey}" />
+												 Style="{DynamicResource EmphaticTextElementStyleKey}" />
 											<LineBreak />
 											<Run Text="{Binding Ship.ExpForNextLevel, StringFormat=Next: {0}, Mode=OneWay}"
 												 FontSize="9" />
 										</TextBlock>
+<<<<<<< .merge_file_a07264
 										<Grid Grid.Column="2"
 											  Margin="12,1,0,0">
+=======
+
+										<Grid x:Name="HPIndicator"
+											  Grid.Column="2"
+											  Margin="12,1,12,0">
+>>>>>>> .merge_file_a12172
 											<Grid.RowDefinitions>
 												<RowDefinition Height="Auto" />
 												<RowDefinition Height="Auto" />
@@ -219,7 +272,7 @@
 											<TextBlock>
 												<Run Text="HP:" />
 												<Run Text="{Binding Ship.HP.Current, Mode=OneWay}"
-													 Style="{DynamicResource PickupTextElementStyleKey}" />
+													 Style="{DynamicResource EmphaticTextElementStyleKey}" />
 												<Run Text="{Binding Ship.HP.Maximum, StringFormat=/{0}, Mode=OneWay}" />
 											</TextBlock>
 											<controls:ColorIndicator Grid.Row="1"
@@ -227,18 +280,35 @@
 																	 LimitedValue="{Binding Ship.HP, Mode=OneWay}"
 																	 Margin="0,2,0,0" />
 										</Grid>
+<<<<<<< .merge_file_a07264
 										<TextBlock Grid.Column="3"
 												   Margin="12,0,0,0">
+=======
+
+										<Grid x:Name="RepairIndicator"
+											  Grid.Column="2"
+											  Visibility="Collapsed"
+											  Margin="8,2,8,0">
+											<Border Background="{DynamicResource FleetRepairingBrushKey}"
+													Opacity=".4" />
+											<TextBlock Text="入渠中"
+													   Style="{DynamicResource EmphaticTextStyleKey}"
+													   HorizontalAlignment="Center" />
+										</Grid>
+
+										<TextBlock Grid.Column="3">
+>>>>>>> .merge_file_a12172
 											<InlineUIContainer>
 												<controls:ConditionIcon ConditionType="{Binding Ship.ConditionType, Mode=OneWay}" />
 											</InlineUIContainer>
 											<Run Text="{Binding Ship.Condition, Mode=OneWay}"
-												 Style="{DynamicResource PickupTextElementStyleKey}" />
+												 Style="{DynamicResource EmphaticTextElementStyleKey}" />
 											<LineBreak />
 											<Run Text="condition"
 												 FontSize="9" />
 										</TextBlock>
 									</Grid>
+<<<<<<< .merge_file_a07264
 								</StackPanel>
 							</DataTemplate>
 						</ItemsControl.ItemTemplate>
@@ -278,15 +348,73 @@
 					</StackPanel>
 				</Border>
 
+=======
+									<Rectangle Height="1"
+											   Margin="0,4,0,0"
+											   Style="{DynamicResource SeparatorRectangleStyleKey}" />
+								</StackPanel>
+
+								<DataTemplate.Triggers>
+									<DataTrigger Binding="{Binding Ship.IsInRepairing}"
+												 Value="True">
+										<Setter TargetName="HPIndicator"
+												Property="Opacity"
+												Value=".2" />
+										<Setter TargetName="RepairIndicator"
+												Property="Visibility"
+												Value="Visible" />
+									</DataTrigger>
+								</DataTemplate.Triggers>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+				</DockPanel>
+			</Border>
+
+			<Grid Grid.Column="1">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Border Grid.Row="0"
+						Grid.Column="0">
+					<StackPanel>
+						<TextBlock Text="データ" />
+
+						<Rectangle Height="1"
+								   Margin="0,7,0,3"
+								   Style="{DynamicResource SeparatorRectangleStyleKey}" />
+
+						<metro2:CallMethodButton Content="艦娘一覧"
+												 Padding="12,8"
+												 Margin="0,5,0,8"
+												 MethodName="ShowShipCatalog" />
+
+						<metro2:CallMethodButton Content="装備一覧"
+												 Padding="12,8"
+												 MethodName="ShowSlotItemCatalog" />
+					</StackPanel>
+				</Border>
+
+>>>>>>> .merge_file_a12172
 				<metro2:CallMethodButton Grid.Row="0"
 										 Grid.Column="1"
 										 Style="{StaticResource JumbButtonStyleKey}"
 										 MethodName="Jump"
 										 MethodParameter="Expeditions">
 					<StackPanel DataContext="{Binding Content.Expeditions}">
+<<<<<<< .merge_file_a07264
 						<TextBlock>
 							<Run Text="{Binding Name}" />
 						</TextBlock>
+=======
+						<TextBlock Text="{Binding Name}" />
+>>>>>>> .merge_file_a12172
 
 						<Rectangle Height="1"
 								   Margin="0,7,0,3"
@@ -296,9 +424,16 @@
 							<ItemsControl.ItemTemplate>
 								<DataTemplate>
 									<TextBlock x:Name="Expedition"
+<<<<<<< .merge_file_a07264
 											   Margin="0,4,0,0">
 										<Run Text="{Binding Id, Mode=OneWay, StringFormat=/{0}}"
 											 Style="{DynamicResource PickupTextElementStyleKey}" />
+=======
+											   Style="{DynamicResource DefaultTextStyleKey}"
+											   Margin="0,4,0,0">
+										<Run Text="{Binding Id, Mode=OneWay, StringFormat=/{0}}"
+											 Style="{DynamicResource EmphaticTextElementStyleKey}" />
+>>>>>>> .merge_file_a12172
 										<Run x:Name="Remaining"
 											 Text="{Binding Expedition.Remaining, StringFormat=- {0}, Mode=OneWay}" />
 									</TextBlock>
@@ -321,6 +456,7 @@
 						</ItemsControl>
 					</StackPanel>
 				</metro2:CallMethodButton>
+<<<<<<< .merge_file_a07264
 
 				<metro2:CallMethodButton Grid.Row="1"
 										 Grid.Column="0"
@@ -392,11 +528,23 @@
 						<TextBlock>
 							<Run Text="{Binding Name}" />
 						</TextBlock>
+=======
+
+				<metro2:CallMethodButton Grid.Row="1"
+										 Grid.Column="0"
+										 Grid.ColumnSpan="2"
+										 Style="{StaticResource JumbButtonStyleKey}"
+										 MethodName="Jump"
+										 MethodParameter="Quests">
+					<StackPanel DataContext="{Binding Content.Quests}">
+						<TextBlock Text="{Binding Name}" />
+>>>>>>> .merge_file_a12172
 
 						<Rectangle Height="1"
 								   Margin="0,7,0,3"
 								   Style="{DynamicResource SeparatorRectangleStyleKey}" />
 
+<<<<<<< .merge_file_a07264
 						<ItemsControl ItemsSource="{Binding Docks}">
 							<ItemsControl.ItemTemplate>
 								<DataTemplate>
@@ -404,6 +552,72 @@
 										<Run x:Name="ShipName"
 											 Text="{Binding Ship, Mode=OneWay}"
 											 Style="{DynamicResource PickupTextElementStyleKey}" />
+=======
+						<TextBlock Text="{Binding Resources.Quests_Untaken, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
+								   Visibility="{Binding IsUntaken, Converter={StaticResource BooleanToVisibilityConverter}}"
+								   HorizontalAlignment="Center"
+								   Margin="0,5,0,0" />
+
+						<ItemsControl ItemsSource="{Binding Current}"
+									  Visibility="{Binding IsUntaken, Converter={StaticResource UniversalBooleanToVisibilityConverter}, ConverterParameter=Collapsed:Visible}">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<Grid Margin="0,4,0,0">
+										<Grid.Resources>
+											<converters:QuestCategoryToColorConverter x:Key="QuestCategoryToColorConverterKey" />
+										</Grid.Resources>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="Auto" />
+											<ColumnDefinition Width="*" />
+										</Grid.ColumnDefinitions>
+										<Rectangle Width="10"
+												   Height="10"
+												   VerticalAlignment="Center">
+											<Rectangle.Fill>
+												<SolidColorBrush Color="{Binding Category, Converter={StaticResource QuestCategoryToColorConverterKey}, Mode=OneWay}" />
+											</Rectangle.Fill>
+										</Rectangle>
+										<TextBlock x:Name="Title"
+												   Grid.Column="1"
+												   Text="{Binding Title, Mode=OneWay}"
+												   Style="{DynamicResource DefaultTextStyleKey}"
+												   Margin="4,0,0,0" />
+									</Grid>
+									<DataTemplate.Triggers>
+										<DataTrigger Binding="{Binding IsUntaken}"
+													 Value="True">
+											<Setter TargetName="Title"
+													Property="Text"
+													Value="{Binding Resources.Quest_Title_Untaken, Source={x:Static models:ResourceService.Current}, Mode=OneWay}" />
+										</DataTrigger>
+									</DataTemplate.Triggers>
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+					</StackPanel>
+				</metro2:CallMethodButton>
+			</Grid>
+
+			<StackPanel Grid.Column="2">
+				<metro2:CallMethodButton Style="{StaticResource JumbButtonStyleKey}"
+										 MethodName="Jump"
+										 MethodParameter="Repairyard">
+					<StackPanel DataContext="{Binding Content.Shipyard}">
+						<TextBlock Text="入渠ドック" />
+
+						<Rectangle Height="1"
+								   Margin="0,7,0,3"
+								   Style="{DynamicResource SeparatorRectangleStyleKey}" />
+
+						<ItemsControl ItemsSource="{Binding RepairingDocks}">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<TextBlock Style="{DynamicResource DefaultTextStyleKey}"
+											   Margin="0,4,0,0">
+										<Run x:Name="ShipName"
+											 Text="{Binding Ship, Mode=OneWay}"
+											 Style="{DynamicResource EmphaticTextElementStyleKey}" />
+>>>>>>> .merge_file_a12172
 										<Run x:Name="Remaining"
 											 Text="{Binding Remaining, StringFormat=- {0}, Mode=OneWay}" />
 									</TextBlock>
@@ -433,15 +647,21 @@
 				<metro2:CallMethodButton Style="{StaticResource JumbButtonStyleKey}"
 										 MethodName="Jump"
 										 MethodParameter="Dockyard">
+<<<<<<< .merge_file_a07264
 					<StackPanel DataContext="{Binding Content.Dockyard}">
 						<TextBlock>
 							<Run Text="{Binding Name, Mode=OneWay}" />
 						</TextBlock>
+=======
+					<StackPanel DataContext="{Binding Content.Shipyard}">
+						<TextBlock Text="建造ドック" />
+>>>>>>> .merge_file_a12172
 
 						<Rectangle Height="1"
 								   Margin="0,7,0,3"
 								   Style="{DynamicResource SeparatorRectangleStyleKey}" />
 
+<<<<<<< .merge_file_a07264
 						<ItemsControl ItemsSource="{Binding Docks}">
 							<ItemsControl.ItemTemplate>
 								<DataTemplate>
@@ -449,11 +669,25 @@
 										<Run x:Name="ShipName"
 											 Text="{Binding Ship, Mode=OneWay}"
 											 Style="{DynamicResource PickupTextElementStyleKey}" />
+=======
+						<ItemsControl ItemsSource="{Binding BuildingDocks}">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<TextBlock Style="{DynamicResource DefaultTextStyleKey}"
+											   Margin="0,4,0,0">
+										<Run x:Name="ShipName"
+											 Text="{Binding Ship, Mode=OneWay}"
+											 Style="{DynamicResource EmphaticTextElementStyleKey}" />
+>>>>>>> .merge_file_a12172
 										<Run x:Name="Remaining"
 											 Text="{Binding Remaining, StringFormat=- {0}, Mode=OneWay}" />
 									</TextBlock>
 									<DataTemplate.Triggers>
+<<<<<<< .merge_file_a07264
 										<DataTrigger Binding="{Binding CanDisplayShipName}"
+=======
+										<DataTrigger Binding="{Binding Source={x:Static models:Settings.Current}, Path=CanDisplayBuildingShipName}"
+>>>>>>> .merge_file_a12172
 													 Value="False">
 											<Setter TargetName="ShipName"
 													Property="Text"

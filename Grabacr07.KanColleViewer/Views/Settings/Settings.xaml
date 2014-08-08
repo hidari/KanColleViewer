@@ -5,15 +5,8 @@
 			 xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-			 xmlns:livet="http://schemas.livet-mvvm.net/2011/wpf"
-			 xmlns:metro="http://schemes.grabacr.net/winfx/2014/controls"
-			 xmlns:metro2="clr-namespace:Grabacr07.Desktop.Metro.Controls;assembly=Desktop.Metro"
 			 xmlns:root="clr-namespace:Grabacr07.KanColleViewer"
-			 xmlns:views="clr-namespace:Grabacr07.KanColleViewer.Views"
-			 xmlns:viewModels="clr-namespace:Grabacr07.KanColleViewer.ViewModels"
-			 xmlns:properties="clr-namespace:Grabacr07.KanColleViewer.Properties"
 			 xmlns:settings="clr-namespace:Grabacr07.KanColleViewer.Views.Settings"
-			 xmlns:controls="clr-namespace:Grabacr07.KanColleViewer.Views.Controls"
 			 xmlns:models="clr-namespace:Grabacr07.KanColleViewer.Models"
 			 mc:Ignorable="d"
 			 d:DesignWidth="700"
@@ -25,9 +18,21 @@
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="Common.xaml" />
 			</ResourceDictionary.MergedDictionaries>
+
+			<Style x:Key="TabHeaderTextStyleKey"
+				   TargetType="{x:Type TextBlock}"
+				   BasedOn="{StaticResource DefaultTextStyleKey}">
+				<Setter Property="Foreground"
+						Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=Foreground}" />
+				<Setter Property="Margin"
+						Value="12,0" />
+				<Setter Property="FontSize"
+						Value="14" />
+			</Style>
 		</ResourceDictionary>
 	</UserControl.Resources>
 
+<<<<<<< .merge_file_a17036
 	<i:Interaction.Triggers>
 		<livet:InteractionMessageTrigger Messenger="{Binding Messenger}"
 										 MessageKey="OpenFolderDialog/Screenshot">
@@ -275,5 +280,67 @@
 			</Grid>
 		</TabItem>
 	</TabControl>
+=======
+	<ScrollViewer VerticalScrollBarVisibility="Auto"
+				  PanningMode="Both">
+		<TabControl Style="{DynamicResource VerticalTabControlStyleKey}">
+			<TabItem>
+				<TabItem.Header>
+					<TextBlock Text="{Binding Resources.Settings_BrowserControl, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
+							   Style="{StaticResource TabHeaderTextStyleKey}" />
+				</TabItem.Header>
+				<settings:Browser Margin="10,0" />
+			</TabItem>
+
+			<TabItem>
+				<TabItem.Header>
+					<TextBlock Text="{Binding Resources.Settings_Window, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
+							   Style="{StaticResource TabHeaderTextStyleKey}" />
+				</TabItem.Header>
+				<settings:Window Margin="10,0" />
+			</TabItem>
+
+			<TabItem>
+				<TabItem.Header>
+					<TextBlock Text="{Binding Resources.Settings_Operation, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
+							   Style="{StaticResource TabHeaderTextStyleKey}" />
+				</TabItem.Header>
+				<settings:Operation Margin="10,0" />
+			</TabItem>
+
+			<TabItem>
+				<TabItem.Header>
+					<TextBlock Text="通知設定"
+							   Style="{StaticResource TabHeaderTextStyleKey}" />
+				</TabItem.Header>
+				<settings:Notification Margin="10,0" />
+			</TabItem>
+
+			<TabItem>
+				<TabItem.Header>
+					<TextBlock Text="{Binding Resources.Settings_Network, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
+							   Style="{StaticResource TabHeaderTextStyleKey}" />
+				</TabItem.Header>
+				<settings:Network Margin="10,0" />
+			</TabItem>
+
+			<TabItem>
+				<TabItem.Header>
+					<TextBlock Text="{Binding Resources.Settings_Other, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
+							   Style="{StaticResource TabHeaderTextStyleKey}" />
+				</TabItem.Header>
+				<settings:Others Margin="10,0" />
+			</TabItem>
+
+			<TabItem>
+				<TabItem.Header>
+					<TextBlock Text="{Binding Resources.Settings_VersionInfo, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
+							   Style="{StaticResource TabHeaderTextStyleKey}" />
+				</TabItem.Header>
+				<settings:VersionInfo Margin="10,0" />
+			</TabItem>
+		</TabControl>
+	</ScrollViewer>
+>>>>>>> .merge_file_a10848
 
 </UserControl>

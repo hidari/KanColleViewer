@@ -24,7 +24,7 @@
 
 	<StackPanel>
 		<TextBlock Text="{Binding Resources.Settings_Proxy, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
-				   Style="{DynamicResource HeaderTextBlockStyleKey}" />
+				   Style="{DynamicResource SettingsHeaderTextStyleKey}" />
 
 		<CheckBox x:Name="CheckBoxUseProxy"
 				  Content="{Binding Resources.Settings_Proxy_Enable, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
@@ -52,10 +52,20 @@
 					<Run Text=": " />
 				</TextBlock>
 				<metro:PromptTextBox Grid.Column="4"
-									 Text="{Binding ProxyPort}"
 									 Prompt="{Binding Resources.Settings_Proxy_Port, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
-									 Width="80" />
+									 Width="80">
+					<metro:PromptTextBox.Text>
+						<Binding Source="{x:Static models:Settings.Current}"
+								 Path="ProxySettings.Port"
+								 UpdateSourceTrigger="PropertyChanged">
+							<Binding.ValidationRules>
+								<metro:Int32Rule Min="0" />
+							</Binding.ValidationRules>
+						</Binding>
+					</metro:PromptTextBox.Text>
+				</metro:PromptTextBox>
 			</Grid>
+<<<<<<< .merge_file_a09952
 			
 			<CheckBox Content="{Binding Resources.Settings_Proxy_Enable_4_SSL, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
 					  IsChecked="{Binding Source={x:Static models:Settings.Current}, Path=ProxySettings.IsEnabledOnSSL}"
@@ -66,6 +76,18 @@
 					  IsChecked="{Binding Source={x:Static models:Settings.Current}, Path=ProxySettings.IsAuthRequired}"
 					  Margin="0,4" />
 
+=======
+
+			<CheckBox Content="{Binding Resources.Settings_Proxy_Enable_4_SSL, Source={x:Static models:ResourceService.Current}, Mode=OneWay}"
+					  IsChecked="{Binding Source={x:Static models:Settings.Current}, Path=ProxySettings.IsEnabledOnSSL}"
+					  Margin="0,4" />
+
+			<CheckBox x:Name="CheckBoxAuthRequired"
+					  Content="プロキシ サーバーにユーザー名とパスワードが必要"
+					  IsChecked="{Binding Source={x:Static models:Settings.Current}, Path=ProxySettings.IsAuthRequired}"
+					  Margin="0,4" />
+
+>>>>>>> .merge_file_a18504
 			<Grid IsEnabled="{Binding ElementName=CheckBoxAuthRequired, Path=IsChecked}"
 				  Margin="0,4">
 				<Grid.ColumnDefinitions>

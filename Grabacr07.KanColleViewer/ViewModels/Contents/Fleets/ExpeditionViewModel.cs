@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< .merge_file_a00596
 using Grabacr07.KanColleViewer.Composition;
 using Grabacr07.KanColleViewer.Properties;
+=======
+using Grabacr07.KanColleWrapper;
+>>>>>>> .merge_file_a10364
 using Grabacr07.KanColleWrapper.Models;
 using Livet;
 using Livet.EventListeners;
@@ -13,6 +17,11 @@ namespace Grabacr07.KanColleViewer.ViewModels.Contents.Fleets
 	public class ExpeditionViewModel : ViewModel
 	{
 		private readonly Expedition source;
+
+		public Mission Mission
+		{
+			get { return this.source.Mission; }
+		}
 
 		public bool IsInExecution
 		{
@@ -41,29 +50,11 @@ namespace Grabacr07.KanColleViewer.ViewModels.Contents.Fleets
 			}
 		}
 
-		#region IsNotifyReturned 変更通知プロパティ
-
-		private bool _IsNotifyReturned;
-
-		public bool IsNotifyReturned
-		{
-			get { return this._IsNotifyReturned; }
-			set
-			{
-				if (this._IsNotifyReturned != value)
-				{
-					this._IsNotifyReturned = value;
-					this.RaisePropertyChanged();
-				}
-			}
-		}
-
-		#endregion
-
 		public ExpeditionViewModel(Expedition expedition)
 		{
 			this.source = expedition;
 			this.CompositeDisposable.Add(new PropertyChangedEventListener(expedition, (sender, args) => this.RaisePropertyChanged(args.PropertyName)));
+<<<<<<< .merge_file_a00596
 
 			expedition.Returned += (sender, args) =>
 			{
@@ -76,6 +67,8 @@ namespace Grabacr07.KanColleViewer.ViewModels.Contents.Fleets
 						() => App.ViewModelRoot.Activate());
 				}
 			};
+=======
+>>>>>>> .merge_file_a10364
 		}
 	}
 }

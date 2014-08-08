@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< .merge_file_a16052
 using Grabacr07.KanColleViewer.Composition;
 using Grabacr07.KanColleViewer.Properties;
+=======
+>>>>>>> .merge_file_a14608
 using Grabacr07.KanColleWrapper.Models;
 using Livet;
 using Livet.EventListeners;
 
-namespace Grabacr07.KanColleViewer.ViewModels.Contents.Docks
+namespace Grabacr07.KanColleViewer.ViewModels.Contents
 {
 	public class RepairingDockViewModel : ViewModel
 	{
@@ -45,30 +48,12 @@ namespace Grabacr07.KanColleViewer.ViewModels.Contents.Docks
 		{
 			get { return this.source.State; }
 		}
-
-		#region IsNotifyCompleted 変更通知プロパティ
-
-		private bool _IsNotifyCompleted;
-
-		public bool IsNotifyCompleted
-		{
-			get { return this._IsNotifyCompleted; }
-			set
-			{
-				if (this._IsNotifyCompleted != value)
-				{
-					this._IsNotifyCompleted = value;
-					this.RaisePropertyChanged();
-				}
-			}
-		}
-
-		#endregion
-
+		
 		public RepairingDockViewModel(RepairingDock source)
 		{
 			this.source = source;
 			this.CompositeDisposable.Add(new PropertyChangedEventListener(source, (sender, args) => this.RaisePropertyChanged(args.PropertyName)));
+<<<<<<< .merge_file_a16052
 
 			source.Completed += (sender, args) =>
 			{
@@ -81,6 +66,8 @@ namespace Grabacr07.KanColleViewer.ViewModels.Contents.Docks
 						() => App.ViewModelRoot.Activate());
 				}
 			};
+=======
+>>>>>>> .merge_file_a14608
 		}
 	}
 }
